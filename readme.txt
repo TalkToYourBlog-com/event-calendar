@@ -4,7 +4,7 @@ Tags: events, calendar, event calendar, schedule, agenda
 Requires at least: 6.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.1.0
+Stable tag: 1.2.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -79,6 +79,9 @@ Nothing is removed unless you tick "Delete all events, categories and settings" 
 The full, human-readable source of this plugin is public: https://github.com/TalkToYourBlog-com/event-calendar.
 
 == Changelog ==
+
+= 1.2.0 =
+* Added a built-in error log (Events -> Error log in the admin menu), modelled on Anonymous Sales Plugin's: off by default, logs event and category saves, settings changes and activation/deactivation. Includes a live viewer with level/search filtering, select, copy and clear.
 
 = 1.1.0 =
 * Renamed to TalkToYourBlog Event Calendar (directory slug: talktoyourblog-event-calendar), to match the renamed MFPro Blog MCP -> TalkToYourBlog. No events, categories or settings are affected.

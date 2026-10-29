@@ -1,6 +1,8 @@
 .talktoyourblog-admin-logo { display: block; margin: 16px 0 0; border-radius: 8px; }
 .talktoyourblog-admin-wrap .card.talktoyourblog-admin-card { max-width: none; padding: 16px; margin: 16px 0 0; }
 .talktoyourblog-admin-wrap .card.talktoyourblog-admin-card h2 { margin-top: 0; }
+.talktoyourblog-admin-full { width: 100%; max-width: none; }
+.talktoyourblog-admin-wrap .widefat { width: 100%; table-layout: auto; }
 .talktoyourblog-project-list { margin: 0; padding-left: 18px; }
 .talktoyourblog-project-list li { margin-bottom: 10px; }
 

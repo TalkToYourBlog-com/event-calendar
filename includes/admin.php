@@ -29,6 +29,8 @@ function talktoyourblog_eventcalendar_admin_enqueue_assets($hook_suffix) {
         TALKTOYOURBLOG_EVENT_CALENDAR_VERSION,
         true
     );
+
+    talktoyourblog_eventcalendar_enqueue_log_assets();
 }
 
 add_action('admin_enqueue_scripts', 'talktoyourblog_eventcalendar_admin_enqueue_assets');
@@ -150,10 +152,15 @@ function talktoyourblog_eventcalendar_save_event_details($post_id, $post) {
     foreach ($values as $field => $value) {
         if ($value === '' || $value === 0) {
             delete_post_meta($post_id, $keys[$field]);
-        } else {
-            update_post_meta($post_id, $keys[$field], $value);
+        } elseif (update_post_meta($post_id, $keys[$field], $value) === false) {
+            talktoyourblog_eventcalendar_log_warning('Event meta save failed.', [
+                'post_id' => $post_id,
+                'field' => $field,
+            ]);
         }
     }
+
+    talktoyourblog_eventcalendar_log_info('Event details saved.', ['post_id' => $post_id]);
 }
 
 add_action('save_post', 'talktoyourblog_eventcalendar_save_event_details', 10, 2);
@@ -307,7 +314,13 @@ function talktoyourblog_eventcalendar_save_category_color($term_id) {
         return;
     }
 
-    update_term_meta($term_id, 'talktoyourblog_event_color', talktoyourblog_eventcalendar_normalize_color(sanitize_text_field(wp_unslash($_POST['talktoyourblog_event_color'])))); // phpcs:ignore WordPress.Security.NonceVerification
+    $result = update_term_meta($term_id, 'talktoyourblog_event_color', talktoyourblog_eventcalendar_normalize_color(sanitize_text_field(wp_unslash($_POST['talktoyourblog_event_color'])))); // phpcs:ignore WordPress.Security.NonceVerification
+
+    if ($result === false) {
+        talktoyourblog_eventcalendar_log_warning('Category colour save failed.', ['term_id' => $term_id]);
+    } else {
+        talktoyourblog_eventcalendar_log_info('Category colour saved.', ['term_id' => $term_id]);
+    }
 }
 
 add_action('created_' . TALKTOYOURBLOG_EVENT_CALENDAR_TAXONOMY, 'talktoyourblog_eventcalendar_save_category_color');
@@ -343,9 +356,24 @@ function talktoyourblog_eventcalendar_register_admin_menu() {
 
     add_submenu_page($parent, __('Event Calendar Settings', 'talktoyourblog-event-calendar'), __('Settings', 'talktoyourblog-event-calendar'), 'manage_options', 'talktoyourblog-event-calendar-settings', 'talktoyourblog_eventcalendar_render_settings_page');
     add_submenu_page($parent, __('About TalkToYourBlog Event Calendar', 'talktoyourblog-event-calendar'), __('About', 'talktoyourblog-event-calendar'), 'manage_options', 'talktoyourblog-event-calendar-about', 'talktoyourblog_eventcalendar_render_about_page');
+    add_submenu_page($parent, __('Error log', 'talktoyourblog-event-calendar'), __('Error log', 'talktoyourblog-event-calendar'), 'manage_options', 'talktoyourblog-event-calendar-error-log', 'talktoyourblog_eventcalendar_render_log_page');
 }
 
 add_action('admin_menu', 'talktoyourblog_eventcalendar_register_admin_menu');
+
+function talktoyourblog_eventcalendar_log_option_update($option, $old_value, $value) {
+    if (strpos((string) $option, 'talktoyourblog_eventcalendar_') !== 0) {
+        return;
+    }
+
+    talktoyourblog_eventcalendar_log_info('Option updated.', [
+        'option' => (string) $option,
+        'value_changed' => $old_value !== $value,
+        'user_id' => get_current_user_id(),
+    ]);
+}
+
+add_action('updated_option', 'talktoyourblog_eventcalendar_log_option_update', 10, 3);
 
 function talktoyourblog_eventcalendar_register_settings() {
     $names = talktoyourblog_eventcalendar_get_option_names();
