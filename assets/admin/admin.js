@@ -2,8 +2,8 @@
     'use strict';
 
     // The end field cannot be earlier than the start; the browser enforces min= on datetime-local.
-    var start = document.getElementById('talktoyourblog_event_start');
-    var end = document.getElementById('talktoyourblog_event_end');
+    var start = document.getElementById('tyb_event_start');
+    var end = document.getElementById('tyb_event_end');
     if (!start || !end) {
         return;
     }

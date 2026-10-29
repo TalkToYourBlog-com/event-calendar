@@ -4,7 +4,7 @@ Tags: events, calendar, event calendar, schedule, agenda
 Requires at least: 6.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.2.0
+Stable tag: 1.3.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -18,7 +18,7 @@ TalkToYourBlog Event Calendar adds an **Events** section to WordPress. Each even
 
 * A page for every event at `/events/your-event/`, rendered by your theme like any other post.
 * An event list at `/events/` and category pages at `/events/category/name/`, upcoming events first.
-* The `[talktoyourblog_event_calendar]` shortcode shows upcoming events as a list, or a month grid with previous/next navigation, on any page or post.
+* The `[tyb_event_calendar]` shortcode shows upcoming events as a list, or a month grid with previous/next navigation, on any page or post.
 * Each event page carries schema.org `Event` structured data, so search engines can show the date and place in results.
 * Cancelled events stay visible with a clear notice instead of disappearing.
 
@@ -37,7 +37,7 @@ TalkToYourBlog Event Calendar adds an **Events** section to WordPress. Each even
 * `featured` – `yes` to show featured events only
 * `month` – starting month for the month view, e.g. `2026-10`
 
-Example: `[talktoyourblog_event_calendar view="month" category="workshops"]`
+Example: `[tyb_event_calendar view="month" category="workshops"]`
 
 **Time zones**
 
@@ -49,10 +49,10 @@ The plugin stores only the events you create. It makes no external requests and 
 
 == Installation ==
 
-1. Upload the `talktoyourblog-event-calendar` folder to `/wp-content/plugins/`, or install it from the Plugins screen.
+1. Upload the `tyb-event-calendar` folder to `/wp-content/plugins/`, or install it from the Plugins screen.
 2. Activate the plugin.
 3. Add categories under Events > Categories, then add events under Events > Add New.
-4. Put `[talktoyourblog_event_calendar]` on a page, or link to `/events/`.
+4. Put `[tyb_event_calendar]` on a page, or link to `/events/`.
 
 If event pages return 404, open Settings > Permalinks and click Save once.
 
@@ -80,11 +80,14 @@ The full, human-readable source of this plugin is public: https://github.com/Tal
 
 == Changelog ==
 
+= 1.3.0 =
+* Shortened the plugin's internal prefix throughout (post type, taxonomy, function and constant names, option names, CSS classes) from "talktoyourblog" to "tyb" for consistency with the other TalkToYourBlog plugins, and to stay well clear of WordPress's 20-character post type/taxonomy limit. The plugin's display name and description stay the same, but the shortcode is now `[tyb_event_calendar]` (was `[talktoyourblog_event_calendar]`) -- update it on any page where it was already used.
+
 = 1.2.0 =
 * Added a built-in error log (Events -> Error log in the admin menu), modelled on Anonymous Sales Plugin's: off by default, logs event and category saves, settings changes and activation/deactivation. Includes a live viewer with level/search filtering, select, copy and clear.
 
 = 1.1.0 =
-* Renamed to TalkToYourBlog Event Calendar (directory slug: talktoyourblog-event-calendar), to match the renamed MFPro Blog MCP -> TalkToYourBlog. No events, categories or settings are affected.
+* Renamed to TalkToYourBlog Event Calendar (directory slug: tyb-event-calendar), to match the renamed MFPro Blog MCP -> TalkToYourBlog. No events, categories or settings are affected.
 * About page now shows the plugin's logo and a "Report a bug or idea" link to the new central issue tracker.
 
 = 1.0.0 =
