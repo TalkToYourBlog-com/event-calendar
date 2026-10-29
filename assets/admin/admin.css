@@ -1,0 +1,14 @@
+.talktoyourblog-admin-logo { display: block; margin: 16px 0 0; border-radius: 8px; }
+.talktoyourblog-admin-wrap .card.talktoyourblog-admin-card { max-width: none; padding: 16px; margin: 16px 0 0; }
+.talktoyourblog-admin-wrap .card.talktoyourblog-admin-card h2 { margin-top: 0; }
+.talktoyourblog-project-list { margin: 0; padding-left: 18px; }
+.talktoyourblog-project-list li { margin-bottom: 10px; }
+
+.talktoyourblog-event-details th { width: 160px; }
+.talktoyourblog-event-details input[type="datetime-local"] { min-width: 220px; }
+
+.talktoyourblog-badge { display: inline-block; padding: 1px 8px; border-radius: 10px; font-size: 12px; line-height: 1.6; margin: 0 4px 4px 0; color: #fff; }
+.talktoyourblog-badge-cancelled { background: #d63638; }
+.talktoyourblog-featured-star { color: #dba617; vertical-align: text-bottom; }
+.talktoyourblog-color-dot { display: inline-block; width: 14px; height: 14px; border-radius: 50%; border: 1px solid rgba(0,0,0,.15); vertical-align: middle; margin-right: 6px; }
+input[type="color"]#talktoyourblog_event_color { width: 64px; height: 32px; padding: 2px; vertical-align: middle; }

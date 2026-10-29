@@ -1,0 +1,58 @@
+/* TalkToYourBlog Event Calendar – front-end. Inherits the theme's fonts and colours; only layout and badges are styled. */
+
+.talktoyourblog-ec { box-sizing: border-box; margin: 0 0 1.5em; }
+.talktoyourblog-ec *, .talktoyourblog-ec *::before, .talktoyourblog-ec *::after { box-sizing: inherit; }
+
+.talktoyourblog-ec-badges { display: inline-flex; flex-wrap: wrap; gap: 4px; }
+.talktoyourblog-ec-badge { display: inline-block; padding: 1px 9px; border-radius: 999px; font-size: .8em; line-height: 1.6; text-decoration: none; }
+.talktoyourblog-ec-badge:hover { text-decoration: none; filter: brightness(.92); }
+
+.talktoyourblog-ec-cancelled, .talktoyourblog-ec-notice { color: #b32d2e; }
+.talktoyourblog-ec-cancelled { font-size: .8em; font-weight: 600; text-transform: uppercase; letter-spacing: .04em; }
+.talktoyourblog-ec-notice { font-weight: 600; margin: 0 0 .75em; }
+
+/* List view */
+.talktoyourblog-ec-list .talktoyourblog-ec-month { margin: 1.5em 0 .5em; font-size: 1.1em; opacity: .75; }
+.talktoyourblog-ec-item { display: flex; gap: 16px; padding: 12px 0; border-top: 1px solid rgba(0,0,0,.1); }
+.talktoyourblog-ec-item:last-child { border-bottom: 1px solid rgba(0,0,0,.1); }
+.talktoyourblog-ec-item.is-cancelled .talktoyourblog-ec-title a { text-decoration: line-through; opacity: .7; }
+.talktoyourblog-ec-date { flex: 0 0 56px; text-align: center; border-radius: 8px; padding: 6px 0; background: rgba(0,0,0,.05); line-height: 1.1; }
+.talktoyourblog-ec-day { display: block; font-size: 1.6em; font-weight: 700; }
+.talktoyourblog-ec-mon { display: block; font-size: .75em; text-transform: uppercase; letter-spacing: .06em; opacity: .75; }
+.talktoyourblog-ec-body { flex: 1 1 auto; min-width: 0; }
+.talktoyourblog-ec-title { margin: 0 0 .2em; font-size: 1.1em; }
+.talktoyourblog-ec-when, .talktoyourblog-ec-where, .talktoyourblog-ec-excerpt { margin: 0 0 .3em; }
+.talktoyourblog-ec-when { font-weight: 600; }
+.talktoyourblog-ec-where, .talktoyourblog-ec-excerpt { opacity: .85; }
+.talktoyourblog-ec-empty { opacity: .75; }
+
+/* Month view */
+.talktoyourblog-ec-nav { display: flex; align-items: center; justify-content: space-between; margin: 0 0 .5em; }
+.talktoyourblog-ec-nav .talktoyourblog-ec-month { margin: 0; font-size: 1.2em; }
+.talktoyourblog-ec-nav-prev, .talktoyourblog-ec-nav-next { display: inline-block; min-width: 2.2em; text-align: center; font-size: 1.4em; line-height: 1.4; text-decoration: none; border-radius: 6px; background: rgba(0,0,0,.05); }
+.talktoyourblog-ec-grid { width: 100%; border-collapse: collapse; table-layout: fixed; }
+.talktoyourblog-ec-grid th { padding: 6px 4px; font-size: .8em; text-transform: uppercase; letter-spacing: .04em; opacity: .7; text-align: left; }
+.talktoyourblog-ec-grid td { vertical-align: top; height: 88px; padding: 4px; border: 1px solid rgba(0,0,0,.1); }
+.talktoyourblog-ec-grid td.talktoyourblog-ec-pad { background: rgba(0,0,0,.02); }
+.talktoyourblog-ec-daynum { display: block; font-size: .85em; opacity: .7; margin: 0 0 4px; }
+.talktoyourblog-ec-day-cell.is-today .talktoyourblog-ec-daynum { font-weight: 700; opacity: 1; }
+.talktoyourblog-ec-day-cell.is-today { background: rgba(34,113,177,.06); }
+.talktoyourblog-ec-chip { --talktoyourblog-ec-color: #2271b1; display: block; margin: 0 0 3px; padding: 2px 6px; border-left: 3px solid var(--talktoyourblog-ec-color); border-radius: 3px; background: color-mix(in srgb, var(--talktoyourblog-ec-color) 12%, transparent); font-size: .8em; line-height: 1.3; text-decoration: none; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+@supports not (background: color-mix(in srgb, red 10%, transparent)) { .talktoyourblog-ec-chip { background: rgba(0,0,0,.05); } }
+.talktoyourblog-ec-chip.is-cancelled { text-decoration: line-through; opacity: .6; }
+.talktoyourblog-ec-chip-time { font-weight: 600; }
+
+@media (max-width: 640px) {
+    .talktoyourblog-ec-grid td { height: auto; min-height: 44px; padding: 3px; }
+    .talktoyourblog-ec-chip { white-space: normal; }
+    .talktoyourblog-ec-chip-time { display: block; }
+}
+
+/* Single event details */
+.talktoyourblog-ec-details { padding: 16px 20px; border-radius: 8px; background: rgba(0,0,0,.04); }
+.talktoyourblog-ec-details dl { display: grid; grid-template-columns: max-content 1fr; gap: 6px 16px; margin: 0; }
+.talktoyourblog-ec-details dt { font-weight: 600; }
+.talktoyourblog-ec-details dd { margin: 0; }
+.talktoyourblog-ec-cta { margin: 14px 0 0; }
+.talktoyourblog-ec-button { display: inline-block; padding: 8px 18px; border-radius: 6px; background: #2271b1; color: #fff; text-decoration: none; font-weight: 600; }
+.talktoyourblog-ec-button:hover { background: #135e96; color: #fff; }
